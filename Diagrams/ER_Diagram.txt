@@ -1,0 +1,25 @@
+Table users {
+  id int [pk, increment] // Primary key
+  username varchar [not null, unique]
+  password varchar [not null]
+  enabled boolean [not null]
+}
+
+Table roles {
+  id int [pk, increment]
+  name varchar [not null, unique] // Role name (e.g., USER, ADMIN)
+}
+
+Table user_roles {
+  user_id int [ref: > users.id] // Foreign key to users
+  role_id int [ref: > roles.id] // Foreign key to roles
+}
+
+Table employees {
+  id int [pk, increment]
+  firstName varchar [not null]
+  lastName varchar [not null]
+  email varchar [not null, unique]
+  job_title varchar [not null]
+}
+
